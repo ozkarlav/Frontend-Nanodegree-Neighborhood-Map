@@ -1,0 +1,14 @@
+{
+  "name": "neighborhood-map",
+  "version": "0.1.0",
+  "author": "Oscar Laverde",
+  "private": true,
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-cssmin": "^1.0.1",
+    "grunt-contrib-uglify": "^1.0.1"
+  },
+  "description": "Neighborhood Map Project",
+  "main": "index.html",
+  "license": "ISC"
+}
