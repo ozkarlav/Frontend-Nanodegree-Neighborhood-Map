@@ -2,20 +2,44 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Neighborhood Map</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bruce Peninsula National Park - Map</title>
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+	<script src="js/app.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <body>
-	<div id="map"></div>
+	<div class="container-fluid">
+		<div class="row">
+			
+			<div class="col-md-3 col-md-push-8">
+				<div id="searchInput"><input type="text" class="form-control" placeholder="Search"></div>
+				<div id="resultList">
+					<ul>
+						<li>test #1</li>
+						<li>test #2</li>
+						<li>test #3</li>
+						<li>test #4</li>
+						<li>test #5</li>
+						<li>test #6</li>
+					</ul>
+				</div>
+			</div>
+			<div id="map" class="col-md-9 col-md-pull-4"></div>
+		</div>
+	</div>
 	<script>
       function initMap() {
         var mapDiv = document.getElementById('map');
         var map = new google.maps.Map(mapDiv, {
-          center: {lat: 44.540, lng: -78.546},
-          zoom: 8
+          center: {lat: 45.192551, lng: -81.526823},
+          zoom: 12
         });
       }
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8kfYnLFLp2N7kXX0nyjc03hdNUXVDMKI&callback=initMap" async defer></script>
 </body>
 </html>

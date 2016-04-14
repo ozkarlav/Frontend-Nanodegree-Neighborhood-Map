@@ -1,4 +1,22 @@
+
+@-ms-viewport       { width: device-width; }
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+
+html,body {
+    height:100%;
+}
+
 #map{
-	width: 100%;
-	height: 500px;
+	height: 700px;
+}
+
+#searchInput{
+	padding: 10px 0px 10px 0px;
+}
+#resultList{
+	padding: 10px 0px 10px 0px;
 }
