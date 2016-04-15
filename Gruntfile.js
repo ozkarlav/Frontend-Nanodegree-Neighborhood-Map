@@ -11,7 +11,7 @@ module.exports = function(grunt){
 		      expand: true,
 		      cwd: 'html/css',
 		      src: ['*.css', '!*.min.css'],
-		      dest: 'html/css',
+		      dest: 'html/dist/css',
 		      ext: '.min.css'
 		    }]
 		  }
@@ -20,7 +20,7 @@ module.exports = function(grunt){
 		uglify: {
 			dist:{
 				files: {
-					'html/js/app.min.js': ['html/js/app.js']
+					'html/dist/js/app.min.js': ['html/js/app.js']
 				}
 			}
 		},
