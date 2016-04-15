@@ -5,29 +5,78 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Bruce Peninsula National Park - Map</title>
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-	<script src="js/app.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.min.css">
+	<link href="css/simple-sidebar.min.css" rel="stylesheet">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<script src="js/app.min.js"></script>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3 col-md-push-8">
-				<div id="searchInput"><input type="text" class="form-control" placeholder="Search"></div>
-				<div id="resultList">
-					<ul>
-						<li>test #1</li>
-						<li>test #2</li>
-						<li>test #3</li>
-						<li>test #4</li>
-						<li>test #5</li>
-						<li>test #6</li>
-					</ul>
+	<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Bruce Peninsula NP
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- map -->
+        <div id="page-content-wrapper">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12"></div>
+						<div id="top-menu-search">
+							<div href="#menu-toggle" class="btn hamburguer-icon" id="menu-toggle"></div>
+							<div id="searchInput"><input type="text" class="form-control" placeholder="Search"></div>
+						</div>
+						<div id="map"></div>
 				</div>
 			</div>
-			<div id="map" class="col-md-9 col-md-pull-4"></div>
 		</div>
+		<!-- /#map-wrapper -->
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8kfYnLFLp2N7kXX0nyjc03hdNUXVDMKI&callback=initMap" async defer></script>
+	<!-- Menu Toggle Script -->
+	<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 	<script>
       function initMap() {
         var mapDiv = document.getElementById('map');
@@ -37,8 +86,5 @@
         });
       }
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8kfYnLFLp2N7kXX0nyjc03hdNUXVDMKI&callback=initMap" async defer></script>
 </body>
 </html>
