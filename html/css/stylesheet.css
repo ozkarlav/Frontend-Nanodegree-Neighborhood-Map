@@ -6,6 +6,18 @@
 @-o-viewport        { width: device-width; }
 @viewport           { width: device-width; }
 
+.hamburguer-icon {
+    background: url(../images/hamburguer-icon.svg) transparent no-repeat;
+    display: inline-block;
+    cursor: pointer;
+    background-position: 50%;
+    position: relative;
+    float:left;
+    height: 40px;
+    width: 40px;
+    margin: 0px 10px 12px 10px;
+}
+
 #map {
 	height: 80vh;
 
@@ -20,16 +32,6 @@
 	width: 226px;
 }
 
-.hamburguer-icon {
-	background: url(../images/hamburguer-icon.svg) transparent no-repeat;
-	display: inline-block;
-    cursor: pointer;
-    background-position: 50%;
-    position: relative;
-    height: 35px;
-    width: 32px;
-    margin-right: 10px;
-    margin-bottom: 3px;
-}
+
 
 

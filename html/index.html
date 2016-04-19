@@ -17,6 +17,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <body>
+    
 	<div id="wrapper">
 
         <!-- Sidebar -->
@@ -57,8 +58,8 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12"></div>
+                    <div href="#menu-toggle" class="btn hamburguer-icon" id="menu-toggle" ></div>
 						<div id="top-menu-search">
-							<div href="#menu-toggle" class="btn hamburguer-icon" id="menu-toggle"></div>
 							<div id="searchInput"><input type="text" class="form-control" placeholder="Search"></div>
 						</div>
 						<div id="map"></div>
@@ -77,14 +78,6 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-	<script>
-      function initMap() {
-        var mapDiv = document.getElementById('map');
-        var map = new google.maps.Map(mapDiv, {
-          center: {lat: 45.192551, lng: -81.526823},
-          zoom: 12
-        });
-      }
-    </script>
+    <script src="js/map.js"></script>
 </body>
 </html>
