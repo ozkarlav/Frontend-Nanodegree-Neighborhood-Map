@@ -13,7 +13,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	<script src="js/app.min.js"></script>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <body>
@@ -21,32 +20,10 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Bruce Peninsula NP
-                    </a>
-                </li>
+            <div class="sidebar-title"><h3>Bruce Peninsula NP<h3></div>
+            <ul class="sidebar-nav" data-bind="foreach: eBirdList">
                 <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="#" data-bind="text: comName"></a>
                 </li>
             </ul>
         </div>
@@ -68,23 +45,18 @@
 		<!-- /#map-wrapper -->
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8kfYnLFLp2N7kXX0nyjc03hdNUXVDMKI&callback=initMap" async defer></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/lib/knockout-3.4.0.js"></script>
+    <script src="js/app.js"></script>
+
+    
 	<!-- Menu Toggle Script -->
 	<script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-    </script>
-	<script>
-      function initMap() {
-        var mapDiv = document.getElementById('map');
-        var map = new google.maps.Map(mapDiv, {
-          center: {lat: 45.192551, lng: -81.526823},
-          zoom: 12
-        });
-      }
     </script>
 </body>
 </html>
