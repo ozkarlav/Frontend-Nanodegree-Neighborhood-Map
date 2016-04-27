@@ -22,11 +22,6 @@
 
 }
 
-.geoLocate {
-    display: inline-block;
-    padding-left: 20PX;
-}
-
 .hamburguer-icon {
 	background: url(../images/hamburguer-icon.svg) transparent no-repeat;
 	display: inline-block;
@@ -40,17 +35,38 @@
 }
 
 #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 300px;
-      }
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 300px;
+}
 
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
+#pac-input:focus {
+    border-color: #4d90fe;
+}
 
+.clearable{
+    background: #fff url(../images/clear-button.png) no-repeat right -15px center;
+      border: 1px solid #999;
+      padding: 3px 18px 3px 4px;     /* Use the same right padding (18) in jQ! */
+      border-radius: 3px;
+      transition: background 0.4s;
+}
+.clearable.x  { 
+    background-position: right 5px center; 
+} /* (jQ) Show icon */
+
+.clearable.onX { 
+    /* (jQ) hover cursor style */
+    cursor: pointer; 
+} 
+.clearable::-ms-clear {
+    /* Remove IE default X */
+    display: none; 
+    width:0; 
+    height:0;
+} 

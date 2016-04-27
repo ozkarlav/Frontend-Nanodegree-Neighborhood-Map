@@ -24,27 +24,31 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 
 function appViewModel() {
   var self = this;
-  var latitude = 42.993826;
-  var longitude = -81.243815;
+  var latitude = 49.2827291;
+  var longitude = -123.12073750000002;
   var map;
   var pos;
   var infoWindow = null;
   var userCords;
   var tempMarkers = [];
   self.eBirdData = ko.observableArray([]);
-  self.eBirdName = ko.observableArray([]);
+  self.locationName = ko.observableArray([]);
+  self.placeLoc = ko.observable('Vancouver, BC')
  // self.mapMarkers = ko.observableArray([]);
 
   //---eBird API function call
 
   function geteBirdData () { 
     self.eBirdData.removeAll();
-    self.eBirdName.removeAll();
+    self.locationName.removeAll();
     var eBirdUrl = "http://ebird.org/ws1.1/data/obs/geo_spp/recent?lng="+longitude.toFixed(2)+"&lat="+latitude.toFixed(2)+"&sci=Haliaeetus%20leucocephalus&dist=50&back=5&maxResults=15&locale=en_US&fmt=json&includeProvisional=true"
     $.getJSON(eBirdUrl, function (data) {
       var birdPoints = data.length;        
         for(var i = 0; i< birdPoints; i++){
-            self.eBirdName.push(data[i].locName);
+            self.locationName.push({
+              shortName: data[i].locName.substring(0, 40),
+              fullLocName: data[i].locName
+            });
             self.eBirdData.push({
               birdName: data[i].comName,
               birdSights: data[i].howMany,
@@ -57,7 +61,7 @@ function appViewModel() {
              })
       }
       mapMarkers(self.eBirdData());
-      self.eBirdName.sort();
+      self.locationName.sort();
   })}
   //
   function initMap() {
@@ -88,7 +92,7 @@ function appViewModel() {
       var address = document.getElementById('address').value;
       geocoder.geocode({'address': address}, function(results, status) {
         self.eBirdData.removeAll();
-        self.eBirdName.removeAll();
+        self.locationName.removeAll();
         clearMarkers();
         mapMarkers(self.eBirdData());
           if (status === google.maps.GeocoderStatus.OK) {
@@ -156,4 +160,16 @@ ko.applyBindings(new appViewModel());
 
 //!---------------- GOOGLE MAP ------------------!
 
+// CLEARABLE INPUT
+function tog(v){return v?'addClass':'removeClass';} 
+$(document).on('input', '.clearable', function(){
+    $(this)[tog(this.value)]('x');
+}).on('mousemove', '.x', function( e ){
+    $(this)[tog(this.offsetWidth-18 < e.clientX-this.getBoundingClientRect().left)]('onX');
+}).on('touchstart click', '.onX', function( ev ){
+    ev.preventDefault();
+    $(this).removeClass('x onX').val('').change();
+});
 
+$('.clearable').trigger("input");
+// Uncomment the line above if you pre-fill values from LS or server

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Bruce Peninsula National Park - Map</title>
+	<title>Bald Eagle Finder</title>
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 	<link href="css/simple-sidebar.css" rel="stylesheet">
@@ -23,10 +23,10 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <div class="sidebar-title"><h3>Bruce Peninsula NP<h3></div>
-            <ul class="sidebar-nav" data-bind="foreach: eBirdName">
+            <div class="sidebar-title"><h3>Bald Eagle Finder<h3></div>
+            <ul class="sidebar-nav" data-bind="foreach: locationName">
                 <li>
-                    <a href="#" data-bind="text: $data"></a>
+                    <a href="#" data-bind="text: shortName"></a>
                 </li>
             </ul>
         </div>
@@ -40,7 +40,7 @@
 						<div id="top-menu-search">
 							<div href="#menu-toggle" class="btn hamburguer-icon" id="menu-toggle"></div>
 							<div id="searchInput">
-                                <input type="text" id="address" class="form-control" placeholder="Search a Place">
+                                <input type="text" id="address" class="form-control clearable" data-bind="value: placeLoc">
                                 
                             </div>
 						</div>
