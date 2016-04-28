@@ -41,7 +41,7 @@ function appViewModel() {
   function geteBirdData () { 
     self.eBirdData.removeAll();
     self.locationName.removeAll();
-    var eBirdUrl = "http://ebird.org/ws1.1/data/obs/geo_spp/recent?lng="+longitude.toFixed(2)+"&lat="+latitude.toFixed(2)+"&sci=Haliaeetus%20leucocephalus&dist=50&back=5&maxResults=15&locale=en_US&fmt=json&includeProvisional=true"
+    var eBirdUrl = "http://ebird.org/ws1.1/data/obs/geo_spp/recent?lng="+longitude.toFixed(2)+"&lat="+latitude.toFixed(2)+"&sci=Haliaeetus%20leucocephalus&dist=50&back=5&maxResults=30&locale=en_US&fmt=json&includeProvisional=true"
     $.getJSON(eBirdUrl, function (data) {
       var birdPoints = data.length;        
         for(var i = 0; i< birdPoints; i++){
