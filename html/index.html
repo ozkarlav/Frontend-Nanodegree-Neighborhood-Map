@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 	<link href="css/simple-sidebar.css" rel="stylesheet">
     
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8kfYnLFLp2N7kXX0nyjc03hdNUXVDMKI"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?&signed_in=true&key=AIzaSyB8kfYnLFLp2N7kXX0nyjc03hdNUXVDMKI"></script>
     <script src="http://jawj.github.io/OverlappingMarkerSpiderfier/bin/oms.min.js"></script>
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,26 +23,38 @@
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <div class="sidebar-title"><h3>Bald Eagle Finder<h3></div>
-            <ul class="sidebar-nav" data-bind="foreach: locationName">
+            <div class="sidebar-title"><h3>Bald Eagle Finder V2<h3></div>
+            <form action="#">
+             <input placeholder="Search…" type="search" name="q" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
+             </form>
+            <!--  <ul class="sidebar-nav" data-bind="foreach: jsonArray">
                 <li>
-                    <a href="#" data-bind="text: shortName"></a>
+                    <a href="#" data-bind="text: birdLocName"></a>
                 </li>
+            </ul> -->
+           
+            <ul class="sidebar-nav" data-bind="template: {name:'locations', foreach:searchLoc}">
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-
+        <script data-proofer-ignore="true" type="text/html" id="locations">
+            <li>
+                <a href="#" data-bind="text: birdLocName, click: $parent.listViewClick"></a>
+            </li>
+        </script>
         <!-- map -->
         <div id="page-content-wrapper" class="map-container">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12"></div>
 						<div id="top-menu-search">
+							<h1>Application Under Development<h1>
 							<div href="#menu-toggle" class="btn hamburguer-icon" id="menu-toggle"></div>
 							<div id="searchInput">
                                 <input type="text" id="address" class="form-control clearable" data-bind="value: placeLoc">
                                 
                             </div>
+                            <p><strong data-bind="text: dataInfo"></strong></p>
 						</div>
 						<div id="map"></div>
 				</div>
@@ -50,12 +62,14 @@
 		</div>
 		<!-- /#map-wrapper -->
 	</div>
+    
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/lib/knockout-3.4.0.js"></script>
-    <script src="js/app.js"></script>
-
+    <script src="js/app2.js"></script>
+<!--     <script type="text/javascript" src="js/alternative.js"></script>
+ -->
     
 	<!-- Menu Toggle Script -->
 	<script>
