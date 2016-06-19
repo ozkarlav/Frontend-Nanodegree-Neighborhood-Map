@@ -6,12 +6,14 @@
 	var tempMarkers = [];
 	var jsonArray = [];
 	var marker;
-	
+	var daysBack = [15,10,5,4,3,2,1];
+	var day = 15;
+
 	var birdsData = {
 		//---eBird API function call
 		getData : function() {
 			
-			var eBirdUrl = "http://ebird.org/ws1.1/data/obs/geo_spp/recent?lng="+longitude.toFixed(2)+"&lat="+latitude.toFixed(2)+"&sci=Haliaeetus%20leucocephalus&dist=50&back=15&maxResults=25&locale=en_US&fmt=json&includeProvisional=true";
+			var eBirdUrl = "http://ebird.org/ws1.1/data/obs/geo_spp/recent?lng="+longitude.toFixed(2)+"&lat="+latitude.toFixed(2)+"&sci=Haliaeetus%20leucocephalus&dist=50&back="+day+"&maxResults=25&locale=en_US&fmt=json&includeProvisional=true";
 			$.getJSON(eBirdUrl, function (data) {
 				console.log(data);
       			var birdPoints = data.length;        
@@ -33,17 +35,24 @@
         				birdLocID: data[i].locID,
         				birdObsDate: data[i].obsDt,
         				birdSciName: data[i].sciName,
-        				contentString : '<h4 id="infoTitle">Bald Eagle Sightings</h4><strong>Observation Date: </strong>'+data[i].obsDt+
-        				'<br/><strong>Location: </strong>'+data[i].locName+'<br/><strong>Number of Eagles: </strong>'+data[i].howMany+
-        				'<br/><strong>Type of Property: </strong>'+locPrivate+
-        				'<br/><a href="https://maps.google.com/?daddr='+data[i].lat+','+data[i].lng+'" target="_blank">Directions</a>'
-
+        				marker: new google.maps.Marker({
+							position: new google.maps.LatLng(data[i].lat, data[i].lng),
+							title: data[i].locName,
+							animation: google.maps.Animation.DROP,
+							map: map,
+							infowindow: new google.maps.InfoWindow({
+								content: '<h3 id="infoTitle">Bald Eagle Sightings</h3><strong>Observation Date: </strong>'+data[i].obsDt+
+        							'<br/><strong>Location: </strong>'+data[i].locName+'<br/><strong>Number of Eagles: </strong>'+data[i].howMany+
+        							'<br/><strong>Type of Property: </strong>'+locPrivate+
+        							'<br/><a href="https://maps.google.com/?daddr='+data[i].lat+','+data[i].lng+'" target="_blank">Directions</a>'
+							})
+						})
         			});
 				}
 				viewModel.eBirdData(jsonArray);
 				//When call gets made but no data is reported for that area
 				if (birdPoints === 0){
-					viewModel.dataInfo('Sorry, there are no Bald Eagels reports in this area')
+					viewModel.dataInfo('Sorry, there are no Bald Eagels reports in this area. Try a different place or incrementing the number of days in your search')
 				}else{
 					viewModel.dataInfo('');
 				}
@@ -61,9 +70,14 @@
 		placeLoc : ko.observable('Vancouver, BC'),
 		dataInfo : ko.observable(),	
 		query: ko.observable(''),
-		// listViewClick : function() {
-	 //    	console.log('You have clicked marker #' + viewModel.eBirdData().birdLocName);
-	 //    }
+		days: ko.observableArray(daysBack),
+		selectedDay: ko.observable(),
+		search: function(){
+			day = viewModel.selectedDay();
+			var geocoder = new google.maps.Geocoder();
+			googleMap.geocodeAddress(geocoder, map);
+
+		}
 	};
 	
 	viewModel.searchLoc = ko.computed(function() {
@@ -79,6 +93,7 @@
 		//Initiate Google Maps
 		initMap : function(){
 			birdsData.getData();
+			googleMap.mapMarkers(viewModel.eBirdData());
 			map = new google.maps.Map(document.getElementById('map'), {
 				zoom: 12,
 				center: new google.maps.LatLng (latitude, longitude),
@@ -88,19 +103,11 @@
 					position: google.maps.ControlPosition.RIGHT_CENTER
 				},
 				scaleControl: false
-			});
-			//Geocode from search on top of map.
-			var geocoder = new google.maps.Geocoder();
-			document.getElementById('address').addEventListener('keypress', function(e) {
-			// Enter pressed?
-			if(e.which == 10 || e.which == 13) {
-				googleMap.geocodeAddress(geocoder, map)}
-			});
-			googleMap.mapMarkers(viewModel.eBirdData());
-			viewModel.eBirdData();
+			});	
 		},
 		//---Geocoding seached place, and calling API to generate new data
 		geocodeAddress : function(geocoder, resultsMap) {
+
 			var address = document.getElementById('address').value;
 			geocoder.geocode({'address': address}, function(results, status) {
 				viewModel.eBirdData.removeAll(); 
@@ -124,24 +131,18 @@
 				var latitude = value.birdLat,
 					longitude = value.birdLng,
 					id = value.birdID,
-					geoLoc = new google.maps.LatLng(latitude, longitude),
 					thisBird = value.birdName,
 					thisDate = value.birdObsDate,
 					thisLocation = value.birdLocName,
-					thisContent = value.contentString,
-					marker = new google.maps.Marker({
-						position: geoLoc,
-						title: thisLocation,
-						animation: google.maps.Animation.DROP,
-						map: map
-					});
+					marker = value.marker
 				tempMarkers.push(marker);
-				var infowindow = new google.maps.InfoWindow({
-					content: thisContent
+				google.maps.event.addListener(marker, 'click', function() {
+					marker.infowindow.open(map, marker);
 				});
-				marker.addListener('click', function() {
-					infowindow.open(map, marker);
-				});
+				google.maps.event.addListener(map, 'click', function() {
+					marker.infowindow.close();
+				}) ;
+				
 			});
 			//Adjusting map view to see all markers found
 			var bounds = new google.maps.LatLngBounds();
@@ -164,34 +165,10 @@
 	  viewModel.listViewClick = function(bird) {
 	  	console.log(bird);
 	    if (bird.birdLocName) {
-	    	var latitude = this.birdLat;
-			var	longitude = this.birdLng;
-			var geoLoc = new google.maps.LatLng(latitude, longitude);
-	    	marker = new google.maps.Marker({
-	    				position: geoLoc,
-						title: this.birdLocName,
-						map: map
-					});
-	    	var infowindow = new google.maps.InfoWindow({
-					content: this.contentString
-				});
-	    	infowindow.open(map, marker);
+	    	marker = this.marker
+	    	this.marker.infowindow.open(map, marker);
 	    	map.setZoom(12);
 	    	map.setCenter(marker.getPosition());
-
-	   //  	var geoLoc
-	   //  	var marker = new google.maps.Marker({
-				// 		position: geoLoc,
-				// 		title: thisLocation,
-				// 		animation: google.maps.Animation.DROP,
-				// 		map: map
-				// 	});
-	   //    	var infowindow = new google.maps.InfoWindow({
-				// 	content: this.birdID + '</br>' + this.birdName + '</br>' + this.birdObsDate + '</br>' + this.birdObsDate.substring(0, 40)
-				// });
-				// marker.addListener('click', function() {
-				// 	infowindow.open(map, marker);
-				// });
 	    }
 	  };
 

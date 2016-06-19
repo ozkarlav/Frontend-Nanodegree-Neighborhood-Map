@@ -11,31 +11,90 @@
 
 }
 
-h1{
-    color: red;
+h1, h2, h3, h4, h5 { 
+  font-family: 'Montserrat', Arial, serif; 
+  font-weight: 400; 
+}
+
+p, a {
+  font-family: 'PT Serif', serif;
+  font-weight: 400; 
+}
+
+h2{
+  color: red;
+}
+
+#pageTitle{
+  display: inline-block;
+  margin: 0px 0px 20px 0px;
+  position: relative;
+  padding-left: 10px;
+}
+
+#searchForm{
+    padding: 0px 0px 20px 15px;
+}
+
+#side-menu-search{
+  display: inline-block;
+  width: 226px;
 }
 
 #top-menu-search {
+  /*margin-top: -28px;*/
 	padding: 0px 0px 20px 15px;
-    
+}
+
+#addressSearch {
+  display: inline-block;
+  width: 50%;  
 }
 
 #searchInput {
-	display: inline-block;
-	width: 226px;
+  display: inline-block;
+  width: 250px;
+  margin-bottom: 5px;
+}
+
+#searchDays {
+  display: inline-block;
+  width: 260px;
 
 }
+
+#address{
+  width: 250px;
+}
+
+select {
+  background: #dcdcdc;
+  width: 45px;
+  padding: 5px;
+  font-size: 16px;
+  line-height: 1;
+  border: 1px solid #666;
+  height: 30px;
+/*   -webkit-appearance: none;
+*/}
 
 .hamburguer-icon {
 	background: url(../images/hamburguer-icon.svg) transparent no-repeat;
 	display: inline-block;
-    cursor: pointer;
-    background-position: 50%;
-    position: relative;
-    height: 35px;
-    width: 32px;
-    margin-right: 10px;
-    margin-bottom: 3px;
+  cursor: pointer;
+  background-position: 50%;
+  position: relative;
+  height: 35px;
+  width: 32px;
+  margin: 10px 0px 20px 15px;
+}
+
+.button {
+  padding:5px;
+  background-color: #dcdcdc;
+  border: 1px solid #666;
+  color:#000;
+  text-decoration:none;
 }
 
 #pac-input {
