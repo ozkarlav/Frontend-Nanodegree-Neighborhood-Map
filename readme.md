@@ -3,7 +3,7 @@
 
 Do you live in North America and would like to find the latest Balg Eagles sightings near you?. This web app connects to the eBird.org online database, where researchers and amateur naturalists report bird sightings from around the world, and displays the Bald Eagle's sightings on a specific area.
 
-[Try it now](https://ozkarlav.github.io/Frontend-Nanodegree-Neighborhood-Map/html/index.html)
+[Try it now](http://oscarlab.ca/eaglelocator/)
 
 Simply use the search field above the Google Map and indiate how many days you want go back, click search and if there are Bald Eagle sightings nearby you can even get directions to the spot.
 
