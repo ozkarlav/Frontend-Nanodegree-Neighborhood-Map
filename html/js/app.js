@@ -117,7 +117,6 @@
 								})
 							})
 			});
-			console.log(jsonArray);
 			viewModel.eBirdData(jsonArray);
 			viewModel.listTitle('My Bald Eagle Sightings');
 			googleMap.mapMarkers(viewModel.eBirdData());
@@ -278,7 +277,7 @@
 
 		//Click on item in list view
 	  viewModel.listViewClick = function(bird) {
-	  	console.log(bird);
+
 	    if (bird.birdLocName) {
 	    	marker = this.marker
 	    	this.marker.infowindow.open(map, marker);

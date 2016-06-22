@@ -28,9 +28,9 @@ Resources Used
 --------
 
 * StackOverflow
+* Udacity
 * Knockout JS Documentation & Tutorials
 * Google Maps API Documentation
 * eBird.org API Documentation
-* DesignShack Blog - [Autocomplete Plugin](http://designshack.net/articles/javascript/create-a-simple-autocomplete-with-html5-jquery/)
-* DevBridge [JQuery Autocomplete](https://github.com/devbridge/jQuery-Autocomplete)
-* [Select on Focus] (http://one-com.github.io/knockout-select-on-focus/)
+* Bootsnipp - [Simple Sidebar](http://bootsnipp.com/snippets/BDWlD)
+* StackOverflow [Clear icon inside input text](http://stackoverflow.com/questions/6258521/clear-icon-inside-input-text)

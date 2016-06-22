@@ -11,7 +11,7 @@ module.exports = function(grunt){
 		      expand: true,
 		      cwd: 'html/css',
 		      src: ['*.css', '!*.min.css'],
-		      dest: 'html/dist/css',
+		      dest: 'html/css',
 		      ext: '.min.css'
 		    }]
 		  }
@@ -20,11 +20,10 @@ module.exports = function(grunt){
 		uglify: {
 			dist:{
 				files: {
-					'html/dist/js/app.min.js': ['html/js/app.js']
+					'html/js/app.min.js': ['html/js/app.js']
 				}
 			}
 		},
-
 		imagemin: {
 		   dist: {
 		      options: {
@@ -34,7 +33,7 @@ module.exports = function(grunt){
 		         expand: true,
 		         cwd: 'html/images',
 		         src: ['*.{png,jpg,gif}'],
-		         dest: 'html/dist'
+		         dest: 'html/images'
 		      }]
 		   }
 		}
