@@ -16,11 +16,11 @@ Features
 * Text input field that filters the list items to locations matching the markers on the map.
 * Responsive web app, with hamburguer icon to hide/show the locations list.
 * Find mote information about the Barld Eagle sighting like:
-** Observation Date
-** Location Name
-** Number of Eagles
-** Type of Property(Private or Public)
-** Directions.
+1. Observation Date
+2. Location Name
+3. Number of Eagles
+4. Type of Property(Private or Public)
+5. Directions.
 
 ***
 
@@ -34,3 +34,10 @@ Resources Used
 * eBird.org API Documentation
 * Bootsnipp - [Simple Sidebar](http://bootsnipp.com/snippets/BDWlD)
 * StackOverflow [Clear icon inside input text](http://stackoverflow.com/questions/6258521/clear-icon-inside-input-text)
+
+***
+
+Build Tools 
+--------
+
+*Grunt was used to minimized .js and .css files. You will need to get grunt.js setup and have at leaeast cssmin and uglify in your tasks configuration
