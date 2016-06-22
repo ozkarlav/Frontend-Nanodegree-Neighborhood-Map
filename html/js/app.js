@@ -1,6 +1,7 @@
 // $(function(){
-	var latitude = 49.2827291;
-	var longitude = -123.12073750000002;
+	
+	var latitude = 43.001044; 
+	var longitude = -81.241073;
 	var map;
 	var pos;
 	var tempMarkers = [];
@@ -8,14 +9,124 @@
 	var marker;
 	var daysBack = [15,10,5,4,3,2,1];
 	var day = 15;
-
 	var birdsData = {
+		myEagles : function(){
+			jsonArray.push({
+				birdID: 1,
+				birdName:"Bald Eagle",
+				birdSights:2,
+				birdLat:42.950497, 
+				birdLng:-81.402960,
+				birdLocID:"L282714",
+				birdLocName:"Komoka Park",
+				birdLocPrivate:false,
+				birdObsDate:"2016-05-13 15:30",
+				birdSciName:"Haliaeetus leucocephalus",
+				marker: new google.maps.Marker({
+								position: new google.maps.LatLng(42.950497, -81.402960),
+								title: "Komoka Park",
+								animation: google.maps.Animation.DROP,
+								map: map,
+								infowindow: new google.maps.InfoWindow({
+									content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-05-13 15:30<br/><strong>Location: </strong>Komoka Park<br/><strong>Number of Eagles: </strong>2<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=42.950497,-81.402960" target="_blank">Directions</a>'
+								})
+							})
+			
+			},
+			{
+				birdID: 2,
+				birdName:"Bald Eagle",
+				birdSights:1,
+				birdLat:42.971479,
+				birdLng:-81.291974,
+				birdLocID:"L282714",
+				birdLocName:"Springbank Park",
+				birdLocPrivate:false,
+				birdObsDate:"2016-06-16 14:30",
+				birdSciName:"Haliaeetus leucocephalus",
+				marker: new google.maps.Marker({
+								position: new google.maps.LatLng(42.971479, -81.291974),
+								title: "Springbank Park",
+								animation: google.maps.Animation.DROP,
+								map: map,
+								infowindow: new google.maps.InfoWindow({
+									content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-06-16 14:30<br/><strong>Location: </strong>Springbank Park<br/><strong>Number of Eagles: </strong>1<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=42.971479,-81.291974" target="_blank">Directions</a>'
+								})
+							})
+			},
+			{
+				birdID: 3,
+				birdName:"Bald Eagle",
+				birdSights:1,
+				birdLat:43.041009, 
+				birdLng:-81.184877,
+				birdLocID:"L282714",
+				birdLocName:"Fanshawe Park",
+				birdLocPrivate:false,
+				birdObsDate:"2016-05-06 9:30",
+				birdSciName:"Haliaeetus leucocephalus",
+				marker: new google.maps.Marker({
+								position: new google.maps.LatLng(43.041009, -81.184877),
+								title: "Fanshawe Park",
+								animation: google.maps.Animation.DROP,
+								map: map,
+								infowindow: new google.maps.InfoWindow({
+									content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-05-06 9:30<br/><strong>Location: </strong>Fanshawe Park<br/><strong>Number of Eagles: </strong>1<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=43.041009,-81.184877" target="_blank">Directions</a>'
+								})
+							})
+			},
+			{
+				birdID: 4,
+				birdName:"Bald Eagle",
+				birdSights:2,
+				birdLat:43.012165, 
+				birdLng:-81.269242,
+				birdLocID:"L282714",
+				birdLocName:"Western University",
+				birdLocPrivate:false,
+				birdObsDate:"2016-03-18 18:30",
+				birdSciName:"Haliaeetus leucocephalus",
+				marker: new google.maps.Marker({
+								position: new google.maps.LatLng(43.012165, -81.269242),
+								title: "Western University",
+								animation: google.maps.Animation.DROP,
+								map: map,
+								infowindow: new google.maps.InfoWindow({
+									content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-03-18 18:30<br/><strong>Location: </strong>Western University<br/><strong>Number of Eagles: </strong>2<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=43.012165,-81.269242" target="_blank">Directions</a>'
+								})
+							})
+			},
+			{
+				birdID: 5,
+				birdName:"Bald Eagle",
+				birdSights:2,
+				birdLat:42.945509,
+				birdLng:-81.191275,
+				birdLocID:"L282714",
+				birdLocName:"Pond Mills",
+				birdLocPrivate:false,
+				birdObsDate:"2016-02-18 11:30",
+				birdSciName:"Haliaeetus leucocephalus",
+				marker: new google.maps.Marker({
+								position: new google.maps.LatLng(42.945509, -81.191275),
+								title: "Pond Mills",
+								animation: google.maps.Animation.DROP,
+								map: map,
+								infowindow: new google.maps.InfoWindow({
+									content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-02-18 11:30<br/><strong>Location: </strong>Pond Mills<br/><strong>Number of Eagles: </strong>2<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=42.945509,-81.191275" target="_blank">Directions</a>'
+								})
+							})
+			});
+			console.log(jsonArray);
+			viewModel.eBirdData(jsonArray);
+			viewModel.listTitle('My Bald Eagle Sightings');
+			googleMap.mapMarkers(viewModel.eBirdData());
+		},
 		//---eBird API function call
 		getData : function() {
 			
 			var eBirdUrl = "http://ebird.org/ws1.1/data/obs/geo_spp/recent?lng="+longitude.toFixed(2)+"&lat="+latitude.toFixed(2)+"&sci=Haliaeetus%20leucocephalus&dist=50&back="+day+"&maxResults=25&locale=en_US&fmt=json&includeProvisional=true";
 			$.getJSON(eBirdUrl, function (data) {
-				console.log(data);
       			var birdPoints = data.length;        
       			for(var i = 0; i< birdPoints; i++){
       				var locPrivate;
@@ -52,7 +163,7 @@
 				viewModel.eBirdData(jsonArray);
 				//When call gets made but no data is reported for that area
 				if (birdPoints === 0){
-					viewModel.dataInfo('Sorry, there are no Bald Eagels reports in this area. Try a different place or incrementing the number of days in your search')
+					viewModel.dataInfo('Sorry, there are no Bald Eagles reports in this area. Try a different place or incrementing the number of days in your search')
 				}else{
 					viewModel.dataInfo('');
 				}
@@ -60,18 +171,19 @@
 			})
 			//Handling API call error put code below  
 			.error(function(){
-				viewModel.dataInfo('Sorry, something went rong with this search. Please try later')
+				viewModel.dataInfo('Sorry, something went wrong with this search. Please try later')
 			}) ;
 		}
 	};
 
 	var viewModel = {
 		eBirdData : ko.observableArray([]),
-		placeLoc : ko.observable('Vancouver, BC'),
+		placeLoc : ko.observable('London, ON'),
 		dataInfo : ko.observable(),	
-		query: ko.observable(''),
-		days: ko.observableArray(daysBack),
+		query : ko.observable(''),
+		days : ko.observableArray(daysBack),
 		selectedDay: ko.observable(),
+		listTitle : ko.observable(''),
 		search: function(){
 			day = viewModel.selectedDay();
 			var geocoder = new google.maps.Geocoder();
@@ -92,8 +204,6 @@
 	var googleMap = {
 		//Initiate Google Maps
 		initMap : function(){
-			birdsData.getData();
-			googleMap.mapMarkers(viewModel.eBirdData());
 			map = new google.maps.Map(document.getElementById('map'), {
 				zoom: 12,
 				center: new google.maps.LatLng (latitude, longitude),
@@ -104,6 +214,9 @@
 				},
 				scaleControl: false
 			});	
+			 birdsData.myEagles();
+			 googleMap.mapMarkers(viewModel.eBirdData());
+			
 		},
 		//---Geocoding seached place, and calling API to generate new data
 		geocodeAddress : function(geocoder, resultsMap) {
@@ -119,6 +232,7 @@
 					latitude = results[0].geometry.location.lat();
 					longitude = results[0].geometry.location.lng();
 					googleMap.mapMarkers(viewModel.eBirdData());
+					viewModel.listTitle('Search results...');
 					birdsData.getData();
 				} else {
 					alert('Geocode was not successful for the following reason: ' + status);
@@ -127,6 +241,7 @@
 		},
 		//---Generating new markers using eBird API data
 		mapMarkers : function(array) {
+
 			$.each(array, function(index, value) {
 				var latitude = value.birdLat,
 					longitude = value.birdLng,
@@ -167,7 +282,7 @@
 	    if (bird.birdLocName) {
 	    	marker = this.marker
 	    	this.marker.infowindow.open(map, marker);
-	    	map.setZoom(12);
+	    	map.setZoom(14);
 	    	map.setCenter(marker.getPosition());
 	    }
 	  };
@@ -179,6 +294,9 @@
 // });
 
 
+//Clear icon inside input text
+//stackoverflow.com/questions/6258521/clear-icon-inside-input-text
+
 function tog(v){return v?'addClass':'removeClass';} 
 $(document).on('input', '.clearable', function(){
     $(this)[tog(this.value)]('x');
@@ -189,5 +307,5 @@ $(document).on('input', '.clearable', function(){
     $(this).removeClass('x onX').val('').change();
 });
 
-$('.clearable').trigger("input");
+ $('.clearable').trigger("input");
 // Uncomment the line above if you pre-fill values from LS or server

@@ -1,0 +1,36 @@
+"Read me" - Udacity Neighborhood Map Project
+--------
+
+Do you live in North America and would like to find the latest Balg Eagles sightings near you?. This web app connects to the eBird.org online database, where researchers and amateur naturalists report bird sightings from around the world, and displays the Bald Eagle's sightings on a specific area.
+
+Simply use the search field above the Google Map and indiate how many days you want go back, click search and if there are Bald Eagle sightings nearby you can even get directions to the spot.
+
+***
+
+Features
+-------
+
+* 5 of my own Bald Eagle reports are showed before any search is made.
+* Location search.
+* Your search will generate a maximum of 25 locations where Bald Eagles have been seen.
+* Text input field that filters the list items to locations matching the markers on the map.
+* Responsive web app, with hamburguer icon to hide/show the locations list.
+* Find mote information about the Barld Eagle sighting like:
+** Observation Date
+** Location Name
+** Number of Eagles
+** Type of Property(Private or Public)
+** Directions.
+
+***
+
+Resources Used
+--------
+
+* StackOverflow
+* Knockout JS Documentation & Tutorials
+* Google Maps API Documentation
+* eBird.org API Documentation
+* DesignShack Blog - [Autocomplete Plugin](http://designshack.net/articles/javascript/create-a-simple-autocomplete-with-html5-jquery/)
+* DevBridge [JQuery Autocomplete](https://github.com/devbridge/jQuery-Autocomplete)
+* [Select on Focus] (http://one-com.github.io/knockout-select-on-focus/)

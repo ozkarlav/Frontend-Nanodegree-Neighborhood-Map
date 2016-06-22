@@ -23,9 +23,9 @@
 	<div id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <div class="sidebar-title"><h3>Bald Eagle Finder V2<h3></div>
+            <div class="sidebar-title"><h4 data-bind="text: listTitle"><h4></div>
             <form id="searchForm" action="#">
-                <input id="side-menu-search" placeholder="Search locations list..." type="search" name="q" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off"> 
+                <input id="side-menu-search" placeholder="Search locations list..." type="search" name="q" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off" onkeypress="return event.keyCode != 13;"> 
             </form>
             <ul class="sidebar-nav" data-bind="template: {name:'locations', foreach:searchLoc}">
             </ul>
@@ -41,7 +41,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12"></div>
-                        <div ><div href="#menu-toggle" class="btn hamburguer-icon" id="menu-toggle"></div><h3 id="pageTitle">Look for the latest Bald Eagle Sightings</h3></div>
+                        <div ><div href="#menu-toggle" class="btn hamburguer-icon" id="menu-toggle"></div><h3 id="pageTitle">BALD EAGLE FINDER</h3></div>
 						<div id="top-menu-search">
 							
                             <form id="addressSearch" data-bind="submit: search">
@@ -53,7 +53,7 @@
                                         <span> day(s) back </span><button class="button" type="submit">Search</button>
                                 </div>
                             </form>
-                            <p><strong data-bind="text: dataInfo"></strong></p>
+                            <p><strong data-bind="text: dataInfo" class="infoLine"></strong></p>
 						</div>
 						<div id="map"></div>
 				</div>
@@ -66,9 +66,6 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/lib/knockout-3.4.0.js"></script>
     <script src="js/app.js"></script>
-<!--     <script type="text/javascript" src="js/alternative.js"></script>
- -->
-    
 	<!-- Menu Toggle Script -->
 	<script>
     $("#menu-toggle").click(function(e) {

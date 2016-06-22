@@ -27,13 +27,15 @@ h2{
 
 #pageTitle{
   display: inline-block;
-  margin: 0px 0px 20px 0px;
+  margin: 0px;
   position: relative;
   padding-left: 10px;
 }
 
 #searchForm{
     padding: 0px 0px 20px 15px;
+    font-family: 'PT Serif', serif;
+    font-weight: 400; 
 }
 
 #side-menu-search{
@@ -42,13 +44,14 @@ h2{
 }
 
 #top-menu-search {
-  /*margin-top: -28px;*/
-	padding: 0px 0px 20px 15px;
+	padding: 0px 0px 5px 15px;
 }
 
 #addressSearch {
   display: inline-block;
-  width: 50%;  
+  width: 100%;  
+  font-family: 'PT Serif', serif;
+  font-weight: 400;
 }
 
 #searchInput {
@@ -59,7 +62,7 @@ h2{
 
 #searchDays {
   display: inline-block;
-  width: 260px;
+  width: 200px;
 
 }
 
@@ -86,7 +89,7 @@ select {
   position: relative;
   height: 35px;
   width: 32px;
-  margin: 10px 0px 20px 15px;
+  margin: 0px 0px 10px 15px;
 }
 
 .button {
@@ -110,6 +113,11 @@ select {
 
 #pac-input:focus {
     border-color: #4d90fe;
+}
+
+.infoLine{
+  color:red;
+  font-size: 18px;
 }
 
 .clearable{
