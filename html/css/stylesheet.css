@@ -35,7 +35,7 @@ h2{
 #searchForm{
     padding: 0px 0px 20px 15px;
     font-family: 'PT Serif', serif;
-    font-weight: 400; 
+    font-weight: 200; 
 }
 
 #side-menu-search{
@@ -72,10 +72,10 @@ h2{
 
 select {
   background: #dcdcdc;
-  width: 45px;
+  width: 50px;
   padding: 5px;
-  font-size: 16px;
-  line-height: 1;
+  font-size: 14px;
+  line-height: 1px;
   border: 1px solid #666;
   height: 30px;
 /*   -webkit-appearance: none;
@@ -97,6 +97,7 @@ select {
   background-color: #dcdcdc;
   border: 1px solid #666;
   color:#000;
+  height: 30px;
   text-decoration:none;
 }
 

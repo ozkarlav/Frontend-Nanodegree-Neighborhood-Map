@@ -6,6 +6,7 @@
 	var pos;
 	var tempMarkers = [];
 	var jsonArray = [];
+	var iconImg = 'images/eagle';
 	var marker;
 	var daysBack = [15,10,5,4,3,2,1];
 	var day = 15;
@@ -25,6 +26,7 @@
 				marker: new google.maps.Marker({
 								position: new google.maps.LatLng(42.950497, -81.402960),
 								title: "Komoka Park",
+								icon: iconImg+'Default.png',
 								animation: google.maps.Animation.DROP,
 								map: map,
 								infowindow: new google.maps.InfoWindow({
@@ -47,6 +49,7 @@
 				marker: new google.maps.Marker({
 								position: new google.maps.LatLng(42.971479, -81.291974),
 								title: "Springbank Park",
+								icon: iconImg+'Default.png',
 								animation: google.maps.Animation.DROP,
 								map: map,
 								infowindow: new google.maps.InfoWindow({
@@ -68,6 +71,7 @@
 				marker: new google.maps.Marker({
 								position: new google.maps.LatLng(43.041009, -81.184877),
 								title: "Fanshawe Park",
+								icon: iconImg+'Default.png',
 								animation: google.maps.Animation.DROP,
 								map: map,
 								infowindow: new google.maps.InfoWindow({
@@ -89,6 +93,7 @@
 				marker: new google.maps.Marker({
 								position: new google.maps.LatLng(43.012165, -81.269242),
 								title: "Western University",
+								icon: iconImg+'Default.png',
 								animation: google.maps.Animation.DROP,
 								map: map,
 								infowindow: new google.maps.InfoWindow({
@@ -110,6 +115,7 @@
 				marker: new google.maps.Marker({
 								position: new google.maps.LatLng(42.945509, -81.191275),
 								title: "Pond Mills",
+								icon: iconImg+'Default.png',
 								animation: google.maps.Animation.DROP,
 								map: map,
 								infowindow: new google.maps.InfoWindow({
@@ -148,6 +154,7 @@
         				marker: new google.maps.Marker({
 							position: new google.maps.LatLng(data[i].lat, data[i].lng),
 							title: data[i].locName,
+							icon: iconImg+'Default.png',
 							animation: google.maps.Animation.DROP,
 							map: map,
 							infowindow: new google.maps.InfoWindow({
@@ -195,9 +202,15 @@
 		//In order to access the underlying array and iterate it (just like any other JavaScript array) I declare the observableArray inside a variable
 		var innerArrray = viewModel.eBirdData();
 		var search = viewModel.query().toLowerCase();
-	        return ko.utils.arrayFilter(innerArrray, function(value) {
-	            	return value.birdLocName.toLowerCase().indexOf(search) >= 0;
+	    return ko.utils.arrayFilter(innerArrray, function(value) {
+	    	value.marker.setVisible(false);
+	    	if(value.birdLocName.toLowerCase().indexOf(search) >= 0) {
+	    		value.marker.setVisible(true);
+	    		return value.birdLocName.toLowerCase().indexOf(search) >= 0;
+	    	};
+
 	        });
+	    
     }, viewModel);
 
 	var googleMap = {
@@ -219,9 +232,9 @@
 		},
 		//---Geocoding seached place, and calling API to generate new data
 		geocodeAddress : function(geocoder, resultsMap) {
-
 			var address = document.getElementById('address').value;
 			geocoder.geocode({'address': address}, function(results, status) {
+				viewModel.query('');
 				viewModel.eBirdData.removeAll(); 
 				googleMap.clearMarkers();
 				googleMap.mapMarkers(viewModel.eBirdData());
@@ -279,10 +292,27 @@
 	  viewModel.listViewClick = function(bird) {
 
 	    if (bird.birdLocName) {
-	    	marker = this.marker
-	    	this.marker.infowindow.open(map, marker);
+	    	marker = this.marker;
+	    	marker.infowindow.open(map, marker);
 	    	map.setZoom(14);
 	    	map.setCenter(marker.getPosition());
+	    }
+	  };
+
+	  viewModel.mouseOver = function(bird){
+	  	if (bird.birdLocName) {
+	    	marker = this.marker;
+	    	marker.icon
+	    	marker.setAnimation(google.maps.Animation.BOUNCE);
+	    	marker.setIcon(iconImg+'Selected.png');
+	    }
+	  };
+
+	  viewModel.mouseOut = function(bird){
+	  	if (bird.birdLocName) {
+	    	marker = this.marker
+	    	marker.setAnimation(null);
+	    	marker.setIcon(iconImg+'Default.png');
 	    }
 	  };
 
