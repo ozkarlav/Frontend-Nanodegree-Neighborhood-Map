@@ -1,106 +1,105 @@
-
-@-ms-viewport       { width: device-width; }
-@-webkit-viewport   { width: device-width; }
-@-moz-viewport      { width: device-width; }
-@-ms-viewport       { width: device-width; }
-@-o-viewport        { width: device-width; }
-@viewport           { width: device-width; }
-
+@-ms-viewport {
+    width: device-width;
+}
+@-webkit-viewport {
+    width: device-width;
+}
+@-moz-viewport {
+    width: device-width;
+}
+@-ms-viewport {
+    width: device-width;
+}
+@-o-viewport {
+    width: device-width;
+}
+@viewport {
+    width: device-width;
+}
 #map {
-	height: 80vh;
-
+    height: 80vh;
 }
-
-h1, h2, h3, h4, h5 { 
-  font-family: 'Montserrat', Arial, serif; 
-  font-weight: 400; 
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Montserrat', Arial, serif;
+    font-weight: 400;
 }
-
-p, a {
-  font-family: 'PT Serif', serif;
-  font-weight: 400; 
+p,
+a {
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
 }
-
-h2{
-  color: red;
+h2 {
+    color: red;
 }
-
-#pageTitle{
-  display: inline-block;
-  margin: 0px;
-  position: relative;
-  padding-left: 10px;
+#pageTitle {
+    display: inline-block;
+    margin: 0px;
+    position: relative;
+    padding-left: 10px;
 }
-
-#searchForm{
+#searchForm {
     padding: 0px 0px 20px 15px;
     font-family: 'PT Serif', serif;
-    font-weight: 200; 
+    font-weight: 200;
 }
-
-#side-menu-search{
-  display: inline-block;
-  width: 226px;
+#side-menu-search {
+    display: inline-block;
+    width: 226px;
 }
-
 #top-menu-search {
-	padding: 0px 0px 5px 15px;
+    padding: 0px 0px 5px 15px;
 }
-
 #addressSearch {
-  display: inline-block;
-  width: 100%;  
-  font-family: 'PT Serif', serif;
-  font-weight: 400;
+    display: inline-block;
+    width: 100%;
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
 }
-
 #searchInput {
-  display: inline-block;
-  width: 250px;
-  margin-bottom: 5px;
+    display: inline-block;
+    width: 250px;
+    margin-bottom: 5px;
 }
-
 #searchDays {
-  display: inline-block;
-  width: 200px;
-
+    display: inline-block;
+    width: 200px;
 }
-
-#address{
-  width: 250px;
+#address {
+    width: 250px;
 }
-
 select {
-  background: #dcdcdc;
-  width: 50px;
-  padding: 5px;
-  font-size: 14px;
-  line-height: 1px;
-  border: 1px solid #666;
-  height: 30px;
-/*   -webkit-appearance: none;
-*/}
-
+    background: #dcdcdc;
+    width: 50px;
+    padding: 5px;
+    font-size: 14px;
+    line-height: 1px;
+    border: 1px solid #666;
+    height: 30px;
+    /*   -webkit-appearance: none;
+*/
+}
 .hamburguer-icon {
-	background: url(../images/hamburguer-icon.svg) transparent no-repeat;
-	display: inline-block;
-  cursor: pointer;
-  background-position: 50%;
-  position: relative;
-  height: 35px;
-  width: 32px;
-  margin: 0px 0px 10px 15px;
+    background: url(../images/hamburguer-icon.svg) transparent no-repeat;
+    display: inline-block;
+    cursor: pointer;
+    background-position: 50%;
+    position: relative;
+    height: 35px;
+    width: 32px;
+    margin: 0px 0px 10px 15px;
 }
-
 .button {
-  padding:5px;
-  background-color: #dcdcdc;
-  border: 1px solid #666;
-  color:#000;
-  height: 30px;
-  text-decoration:none;
+    padding: 5px;
+    background-color: #dcdcdc;
+    border: 1px solid #666;
+    color: #000;
+    height: 30px;
+    text-decoration: none;
 }
-
 #pac-input {
     background-color: #fff;
     font-family: Roboto;
@@ -111,34 +110,36 @@ select {
     text-overflow: ellipsis;
     width: 300px;
 }
-
 #pac-input:focus {
     border-color: #4d90fe;
 }
-
-.infoLine{
-  color:red;
-  font-size: 18px;
+.infoLine {
+    color: red;
+    font-size: 18px;
 }
-
-.clearable{
+.clearable {
     background: #fff url(../images/clear-button.png) no-repeat right -15px center;
-      border: 1px solid #999;
-      padding: 3px 18px 3px 4px;     /* Use the same right padding (18) in jQ! */
-      border-radius: 3px;
-      transition: background 0.4s;
+    border: 1px solid #999;
+    padding: 3px 18px 3px 4px;
+    /* Use the same right padding (18) in jQ! */
+    
+    border-radius: 3px;
+    transition: background 0.4s;
 }
-.clearable.x  { 
-    background-position: right 5px center; 
-} /* (jQ) Show icon */
+.clearable.x {
+    background-position: right 5px center;
+}
+/* (jQ) Show icon */
 
-.clearable.onX { 
+.clearable.onX {
     /* (jQ) hover cursor style */
-    cursor: pointer; 
-} 
+    
+    cursor: pointer;
+}
 .clearable::-ms-clear {
     /* Remove IE default X */
-    display: none; 
-    width:0; 
-    height:0;
-} 
+    
+    display: none;
+    width: 0;
+    height: 0;
+}
