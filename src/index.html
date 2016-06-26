@@ -63,13 +63,14 @@
 		</div>
 		<!-- /#map-wrapper -->
 	</div>
-    <script async src="https://maps.googleapis.com/maps/api/js?&signed_in=true&key=AIzaSyB8kfYnLFLp2N7kXX0nyjc03hdNUXVDMKI&callback=initialize"></script>
+    
     <script>
         function initialize() {
             googleMap.initMap();
             ko.applyBindings(viewModel);
         };
     </script>
+    <script async src="https://maps.googleapis.com/maps/api/js?&signed_in=true&key=AIzaSyB8kfYnLFLp2N7kXX0nyjc03hdNUXVDMKI&callback=initialize"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/lib/knockout-3.4.0.js"></script>
