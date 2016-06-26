@@ -62,11 +62,11 @@ Build Tools
 
 * You will need to install the following Grunt plug-ins to build the project:
 
-1. grunt-contrib-cssmin
-2. grunt-contrib-uglify
-3. grunt-contrib-htmlmin
-4. grunt-contrib-copy
+ 1. grunt-contrib-cssmin
+ 2. grunt-contrib-uglify
+ 3. grunt-contrib-htmlmin
+ 4. grunt-contrib-copy
 
 * If you are only interested in generating the production code, simply run the command 'grunt' to run all optimizations in the Gruntfile. Production code will be saved in the dist/ directory.
 
-* To view the pages from the production code, navigate to the dist directory and open index.html in your browser.
+* To view the pages from the production code, navigate to the dist/ directory and open index.html in your browser.
