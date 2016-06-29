@@ -6,6 +6,7 @@
 	var jsonArray = [];
 	var iconImg = 'images/eagle';
 	var marker;
+	var infowindow;
 	var daysBack = [15, 10, 5, 4, 3, 2, 1];
 	var day = 15;
 	var birdsData = {
@@ -27,11 +28,8 @@
 	                icon: iconImg + 'Default.png',
 	                animation: google.maps.Animation.DROP,
 	                map: map,
-	                infowindow: new google.maps.InfoWindow({
-	                    content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-05-13 15:30<br/><strong>Location: </strong>Komoka Park<br/><strong>Number of Eagles: </strong>2<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=42.950497,-81.402960" target="_blank">Directions</a>'
-	                })
+	                content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-05-13 15:30<br/><strong>Location: </strong>Komoka Park<br/><strong>Number of Eagles: </strong>2<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=42.950497,-81.402960" target="_blank">Directions</a>'
 	            })
-
 	        }, {
 	            birdID: 2,
 	            birdName: "Bald Eagle",
@@ -49,9 +47,7 @@
 	                icon: iconImg + 'Default.png',
 	                animation: google.maps.Animation.DROP,
 	                map: map,
-	                infowindow: new google.maps.InfoWindow({
-	                    content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-06-16 14:30<br/><strong>Location: </strong>Springbank Park<br/><strong>Number of Eagles: </strong>1<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=42.971479,-81.291974" target="_blank">Directions</a>'
-	                })
+	                content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-06-16 14:30<br/><strong>Location: </strong>Springbank Park<br/><strong>Number of Eagles: </strong>1<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=42.971479,-81.291974" target="_blank">Directions</a>'
 	            })
 	        }, {
 	            birdID: 3,
@@ -70,9 +66,7 @@
 	                icon: iconImg + 'Default.png',
 	                animation: google.maps.Animation.DROP,
 	                map: map,
-	                infowindow: new google.maps.InfoWindow({
-	                    content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-05-06 9:30<br/><strong>Location: </strong>Fanshawe Park<br/><strong>Number of Eagles: </strong>1<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=43.041009,-81.184877" target="_blank">Directions</a>'
-	                })
+	                content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-05-06 9:30<br/><strong>Location: </strong>Fanshawe Park<br/><strong>Number of Eagles: </strong>1<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=43.041009,-81.184877" target="_blank">Directions</a>'
 	            })
 	        }, {
 	            birdID: 4,
@@ -91,9 +85,7 @@
 	                icon: iconImg + 'Default.png',
 	                animation: google.maps.Animation.DROP,
 	                map: map,
-	                infowindow: new google.maps.InfoWindow({
-	                    content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-03-18 18:30<br/><strong>Location: </strong>Western University<br/><strong>Number of Eagles: </strong>2<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=43.012165,-81.269242" target="_blank">Directions</a>'
-	                })
+	                content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-03-18 18:30<br/><strong>Location: </strong>Western University<br/><strong>Number of Eagles: </strong>2<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=43.012165,-81.269242" target="_blank">Directions</a>'
 	            })
 	        }, {
 	            birdID: 5,
@@ -112,9 +104,7 @@
 	                icon: iconImg + 'Default.png',
 	                animation: google.maps.Animation.DROP,
 	                map: map,
-	                infowindow: new google.maps.InfoWindow({
-	                    content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-02-18 11:30<br/><strong>Location: </strong>Pond Mills<br/><strong>Number of Eagles: </strong>2<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=42.945509,-81.191275" target="_blank">Directions</a>'
-	                })
+	                content: '<h3 id="infoTitle">My Bald Eagle Sightings</h3><strong>Observation Date: </strong>2016-02-18 11:30<br/><strong>Location: </strong>Pond Mills<br/><strong>Number of Eagles: </strong>2<br/><strong>Type of Property: </strong>Public<br/><a href="https://maps.google.com/?daddr=42.945509,-81.191275" target="_blank">Directions</a>'
 	            })
 	        });
 	        viewModel.eBirdData(jsonArray);
@@ -137,34 +127,32 @@
 	                    }
 	                    jsonArray.push({
 	                        birdID: i,
-	                        birdLocName: data[i].locName ? data[i].locName.substring(0, 35) + '.' : "Location Unknown",
-	                        birdName: data[i].comName ? data[i].comName : "Name Unknown",
-	                        birdSights: data[i].howMany ? data[i].howMany : "Number Unknown",
+	                        birdLocName: data[i].locName.substring(0, 35) || "Location Unknown",
+	                        birdName: data[i].comName || "Name Unknown",
+	                        birdSights: data[i].howMany || "Number Unknown",
 	                        birdLat: data[i].lat,
 	                        birdLng: data[i].lng,
 	                        birdLocPrivate: locPrivate,
-	                        birdLocID: data[i].locID ? data[i].locID : "Location ID Unknown",
-	                        birdObsDate: data[i].obsDt ? data[i].obsDt : "Observation Date Unknown",
-	                        birdSciName: data[i].sciName ? data[i].sciName : "Scientific Name Unknown",
+	                        birdLocID: data[i].locID || "Location ID Unknown",
+	                        birdObsDate: data[i].obsDt || "Observation Date Unknown",
+	                        birdSciName: data[i].sciName || "Scientific Name Unknown",
 	                        marker: new google.maps.Marker({
 	                            position: new google.maps.LatLng(data[i].lat, data[i].lng),
 	                            title: data[i].locName,
 	                            icon: iconImg + 'Default.png',
 	                            animation: google.maps.Animation.DROP,
 	                            map: map,
-	                            infowindow: new google.maps.InfoWindow({
-	                                content: '<h3 id="infoTitle">Bald Eagle Sightings</h3><strong>Observation Date: </strong>' + data[i].obsDt +
-	                                    '<br/><strong>Location: </strong>' + data[i].locName + '<br/><strong>Number of Eagles: </strong>' + data[i].howMany +
-	                                    '<br/><strong>Type of Property: </strong>' + locPrivate +
-	                                    '<br/><a href="https://maps.google.com/?daddr=' + data[i].lat + ',' + data[i].lng + '" target="_blank">Directions</a>'
-	                            })
+	                            content: '<h3 id="infoTitle">Bald Eagle Sightings</h3><strong>Observation Date: </strong>' + data[i].obsDt +
+	                                '<br/><strong>Location: </strong>' + data[i].locName + '<br/><strong>Number of Eagles: </strong>' + data[i].howMany +
+	                                '<br/><strong>Type of Property: </strong>' + locPrivate +
+	                                '<br/><a href="https://maps.google.com/?daddr=' + data[i].lat + ',' + data[i].lng + '" target="_blank">Directions</a>'
 	                        })
 	                    });
 	                }
 	                viewModel.eBirdData(jsonArray);
 	                //When call gets made but no data is reported for that area
 	                if (birdPoints === 0) {
-	                    viewModel.dataInfo('Sorry, there are no Bald Eagles reports in this area. Try a different place or incrementing the number of days in your search')
+	                    viewModel.dataInfo('Sorry, there are no Bald Eagles reports in this area. Try a different place or incrementing the number of days in your search');
 	                } else {
 	                    viewModel.dataInfo('');
 	                }
@@ -172,7 +160,7 @@
 	            })
 	            //Handling API call error put code below  
 	            .fail(function() {
-	                viewModel.dataInfo('Sorry, something went wrong with this search. Please try later')
+	                viewModel.dataInfo('Sorry, something went wrong with this search. Please try later');
 	            });
 	    }
 	};
@@ -196,24 +184,22 @@
 
 	viewModel.searchLoc = ko.computed(function() {
 	    //In order to access the underlying array and iterate it (just like any other JavaScript array) I declare the observableArray inside a variable
-	    var innerArrray = viewModel.eBirdData();
+	    var innerArray = viewModel.eBirdData();
 	    var search = viewModel.query().toLowerCase();
-	    return ko.utils.arrayFilter(innerArrray, function(value) {
+	    return ko.utils.arrayFilter(innerArray, function(value) {
 	        value.marker.setVisible(false);
 	        if (value.birdLocName.toLowerCase().indexOf(search) >= 0) {
 	            value.marker.setVisible(true);
 	            return value.birdLocName.toLowerCase().indexOf(search) >= 0;
-	        };
-
+	        }
 	    });
-
 	}, viewModel);
 
 	var googleMap = {
 	    //Initiate Google Maps
 	    initMap: function() {
 	        map = new google.maps.Map(document.getElementById('map'), {
-	            zoom: 12,
+	            zoom: 10,
 	            center: new google.maps.LatLng(latitude, longitude),
 	            panControl: false,
 	            panControlOptions: {
@@ -222,6 +208,7 @@
 	            },
 	            scaleControl: false
 	        });
+	        infowindow = new google.maps.InfoWindow();
 	        birdsData.myEagles();
 	        googleMap.mapMarkers(viewModel.eBirdData());
 
@@ -251,7 +238,7 @@
 	    },
 	    //---Generating new markers using eBird API data
 	    mapMarkers: function(array) {
-
+	        var bounds = new google.maps.LatLngBounds();
 	        $.each(array, function(index, value) {
 	            var latitude = value.birdLat,
 	                longitude = value.birdLng,
@@ -259,10 +246,19 @@
 	                thisBird = value.birdName,
 	                thisDate = value.birdObsDate,
 	                thisLocation = value.birdLocName,
-	                marker = value.marker
+	                marker = value.marker;
 	            tempMarkers.push(marker);
+	            bounds.extend(marker.getPosition());
 	            google.maps.event.addListener(marker, 'click', function() {
-	                marker.infowindow.open(map, marker);
+	                marker.setAnimation(google.maps.Animation.BOUNCE);
+	                setTimeout(function() {
+	                    marker.setAnimation(null);
+	                }, 2000);
+	                infowindow.setContent(marker.content);
+	                infowindow.open(map, marker);
+	            });
+	            google.maps.event.addListener(infowindow, "closeclick", function() {
+	                map.fitBounds(bounds);
 	            });
 	            google.maps.event.addListener(map, 'click', function() {
 	                marker.infowindow.close();
@@ -270,37 +266,33 @@
 
 	        });
 	        //Adjusting map view to see all markers found
-	        var bounds = new google.maps.LatLngBounds();
-	        for (var i = 0; i < tempMarkers.length; i++) {
-	            bounds.extend(tempMarkers[i].getPosition());
-	            map.fitBounds(bounds);
-	        }
+	        map.fitBounds(bounds);
 	    },
 
 	    clearMarkers: function() {
-	        for (var i = 0; i < tempMarkers.length; i++) {
-	            tempMarkers[i].setMap(null);
+	        while (tempMarkers.length) {
+	            tempMarkers[0].setMap(null);
+	            tempMarkers.shift();
 	        }
-	        tempMarkers.length = 0;
 	    }
 
 	};
-
+	//Hamburguer button funtion to open or close left sidebar
 	viewModel.toggleWrapper = function() {
-	    if (viewModel.showWrapper() == false) {
-	        viewModel.showWrapper(true);
-	    } else {
+	    if (viewModel.showWrapper()) {
 	        viewModel.showWrapper(false);
+	    } else {
+	        viewModel.showWrapper(true);
 	    }
-
 	};
 
 	//Click on item in list view
 	viewModel.listViewClick = function(bird) {
 	    if (bird.birdLocName) {
 	        marker = this.marker;
-	        marker.infowindow.open(map, marker);
-	        map.setZoom(14);
+	        infowindow.setContent(marker.content);
+	        infowindow.open(map, marker);
+	        map.setZoom(12);
 	        map.setCenter(marker.getPosition());
 	    }
 	};
@@ -308,7 +300,6 @@
 	viewModel.mouseOver = function(bird) {
 	    if (bird.birdLocName) {
 	        marker = this.marker;
-	        marker.icon
 	        marker.setAnimation(google.maps.Animation.BOUNCE);
 	        marker.setIcon(iconImg + 'Selected.png');
 	    }
@@ -316,7 +307,7 @@
 
 	viewModel.mouseOut = function(bird) {
 	    if (bird.birdLocName) {
-	        marker = this.marker
+	        marker = this.marker;
 	        marker.setAnimation(null);
 	        marker.setIcon(iconImg + 'Default.png');
 	    }
